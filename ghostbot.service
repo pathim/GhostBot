@@ -1,0 +1,14 @@
+[Unit]
+Description=Mumble GhostBot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+EnvironmentFile=/etc/default/ghostbot
+ExecStart=/usr/local/games/ghostbot/venv/bin/python /usr/local/games/ghostbot/ghostbot.py --host="${HOST}" --password="${PASSWORD}" --user="${USER}" --src="${SRC}" --dst="${DST}"
+User=nobody
+Group=nogroup
+ProtectSystem=strict
+
+[Install]
+WantedBy=multi-user.target
